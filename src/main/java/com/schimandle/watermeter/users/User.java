@@ -1,7 +1,6 @@
 package com.schimandle.watermeter.users;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -9,8 +8,10 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private LocalDateTime dateCreated = LocalDateTime.now();
+    @Convert(converter = UUIDConverter.class)
     private UUID uuid = UUID.randomUUID();
     private String firstName;
     private String lastName;
